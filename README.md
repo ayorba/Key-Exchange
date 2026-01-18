@@ -50,14 +50,15 @@ git push
 5. Wait for merge (ideally, a pull request pass the status check will be merged automatically)
 
 ### Step 2: Sign Everyone's Keys
+Note: This step is repeatable. Feel free to rerun when someone needs signatures from you.
 
+#### Method 1 (sign automatically)
 ```bash
 # Pull latest keys
 git pull upstream main
 
 # Run the signing script
-chmod +x sign_all.sh
-./sign_all.sh
+sh ./sign_all.sh
 
 # Commit and push your signatures
 git add signed/
@@ -67,7 +68,10 @@ git push
 
 Create a PR from the main branch of the forked repository to the main branch on the github web portal or using extensions in your IDE.
 
-Note: This step is repeatable. Feel free to rerun when someone needs signatures from you.
+#### Method 2 (sign manually)
+For each `keys/<netID>.asc`, verify its signature and sign it. Place the signed key under `signed/<your-netID>/<signee-netID>.asc` and commit.
+
+Create a PR from the main branch of the forked repository to the main branch on the github web portal or using extensions in your IDE.
 
 ### Step 3: Collect Signatures on Your Key
 
@@ -76,8 +80,7 @@ Note: This step is repeatable. Feel free to rerun when someone needs signatures 
 git pull upstream main
 
 # Run the collection script
-chmod +x collect_signatures.sh
-./collect_signatures.sh
+sh ./collect_signatures.sh
 
 # Export your key with all signatures
 gpg --export --armor "your-email@yale.edu" > my_key_final.asc
