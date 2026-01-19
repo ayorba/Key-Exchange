@@ -53,25 +53,27 @@ git push
 Note: This step is repeatable. Feel free to rerun when someone needs signatures from you.
 
 #### Method 1 (sign automatically)
+pull latest keys.
 ```bash
-# Pull latest keys
 git pull upstream main
-
-# Run the signing script
-sh ./sign_all.sh
-
-# Commit and push your signatures
-git add signed/
-git commit -m "Add signatures from <your-netid>"
-git push
 ```
 
-Create a PR from the main branch of the forked repository to the main branch on the github web portal or using extensions in your IDE.
+Run the signing script to automatically generate signed keys.
+```bash
+sh ./sign_all.sh
+```
+
+Commit your changes and create a PR from the main branch of the forked repository to the main branch on the github web portal or using extensions in your IDE.
 
 #### Method 2 (sign manually)
+pull latest keys.
+```bash
+git pull upstream main
+```
+
 For each `keys/<netID>.asc`, verify its signature and sign it. Place the signed key under `signed/<your-netID>/<signee-netID>.asc` and commit.
 
-Create a PR from the main branch of the forked repository to the main branch on the github web portal or using extensions in your IDE.
+Commit your changes and create a PR from the main branch of the forked repository to the main branch on the github web portal or using extensions in your IDE.
 
 ### Step 3: Collect Signatures on Your Key
 
